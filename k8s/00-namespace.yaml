@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flask-mongo-app
+  labels:
+    app.kubernetes.io/name: flask-mongo-app
+    app.kubernetes.io/part-of: flask-microservice
+
