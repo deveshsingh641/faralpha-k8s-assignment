@@ -76,6 +76,8 @@ flowchart TD
 ├── .gitignore                     # Excludes local venv, binaries, and temp files
 ├── deploy.ps1                     # Automated deployment script for Windows
 ├── deploy.sh                      # Automated deployment script for Linux/macOS
+├── docs/
+│   └── screenshots/               # Cluster, API testing, and HPA verification screenshots
 ├── flask-mongodb-app/
 │   ├── app.py                     # Flask API with MongoDB auth & health endpoints
 │   ├── requirements.txt           # Python package pins
@@ -191,6 +193,8 @@ kubectl rollout status deployment/flask-app -n flask-mongo-app
 kubectl get all,pv,pvc,hpa -n flask-mongo-app
 ```
 
+![Kubernetes Cluster Resources](docs/screenshots/cluster-resources.png)
+
 ### 4. Access the Service
 On Minikube, access the NodePort service:
 ```bash
@@ -263,6 +267,8 @@ Run the automated test suite:
 python scripts/test_endpoints.py http://localhost:5000
 ```
 
+![API Endpoint Verification](docs/screenshots/api-endpoint-testing.png)
+
 Sample output:
 ```text
 === Testing Flask MongoDB Application at http://localhost:5000 ===
@@ -312,6 +318,8 @@ Monitor scaling in real time:
 kubectl get hpa -n flask-mongo-app -w
 kubectl get pods -n flask-mongo-app -l app=flask-app -w
 ```
+
+![HPA Autoscaling Results & Load Test](docs/screenshots/hpa-autoscaling-results.png)
 
 Observed scaling lifecycle:
 ```text
